@@ -1,17 +1,17 @@
 <script>
-	let firstName = "Shishir";
-	let lastName = "Sabbir";
+	// let firstName = "Shishir";
+	// let lastName = "Sabbir";
 	// let beltColor = "Orange";
 
 	// let fullName = firstName + ' ' + lastName;
 	// reactive value
-	$: fullName = `${firstName} ${lastName}`;
+	// $: fullName = `${firstName} ${lastName}`;
 
 	// reactive statements
-	$: {
-		console.log(firstName);
+	// $: {
+		// console.log(firstName);
 		// console.log(beltColor);
-	}
+	// }
 
 	// people array
 	let people = [
@@ -24,17 +24,24 @@
 	
 	const handleInput = e => {
 		beltColor = e.target.value;
-	}
+	};
+
+	const handleClick = (id) => {
+		people = people.filter((person) => {
+			return person.id != id;
+		});
+	};
 </script>
 
 <main>
 	<h1>People Card</h1>
 	<div class="container">
-		{#each people as person}
+		{#each people as person (person.id)}
 			<div class="box" style="border: 1px solid {person.beltColor};">
 				<h3>{person.name}</h3>
 				<p class="age">{person.age} years old</p>
 				<p class="belt"><span style="color: {person.beltColor};">{person.beltColor}</span>-Belt Ninja</p>
+				<button on:click={() => {handleClick(person.id)}}>Delete</button>
 			</div>
 		{:else}
 			<p>No People to Show</p>
@@ -81,7 +88,7 @@
 
 	div.box {
 		width: 400px;
-		height: 125px;
+		height: 180px;
 		/* border: 1px solid #9f9f9f; */
 		margin: 10px;
 		flex-shrink: 0;
