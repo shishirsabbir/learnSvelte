@@ -1,14 +1,15 @@
 <script>
-	let beltColor = "orange" ;
-	const handle_belt = () => {
-		beltColor = "black"
+	let input_field = "Orange";
+	
+	const handleInput = e => {
+		input_field = e.target.value;
 	}
 </script>
 
 <main>
-	<h1>Hello, Shishir</h1>
-	<p><span>{beltColor}</span> Belt Ninja</p>
-	<button on:click={handle_belt}>Belt Update</button>
+	<h1>Type Anything</h1>
+	<p style="color: {input_field};">{input_field}</p>
+	<input type="text" bind:value={input_field}>
 </main>
 
 <style>
@@ -28,11 +29,7 @@
 
 	p {
 		font-variant: small-caps;
-	}
-
-	p > span {
 		font-size: 1.2em;
-		font-weight: bold;
 	}
 
 	@media (min-width: 640px) {
