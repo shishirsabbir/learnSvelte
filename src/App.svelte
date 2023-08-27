@@ -1,4 +1,7 @@
 <script>
+	import Modal from './Modal.svelte';
+
+
 	// let firstName = "Shishir";
 	// let lastName = "Sabbir";
 	// let beltColor = "Orange";
@@ -33,6 +36,8 @@
 	};
 </script>
 
+<!-- adding Modal -->
+<Modal/>
 <main>
 	<h1>People Card</h1>
 	<div class="container">
